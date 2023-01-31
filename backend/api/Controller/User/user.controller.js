@@ -31,7 +31,7 @@ router.post("/register", uploadImg, userValidator.register, async (req, res) => 
   }
 });
 
-router.get("/:id", userValidator.checkParamId, async (req, res) => {
+router.get("/:id", async (req, res) => {
   try {
     let { success, message, data } = await UserService.Exists({
       _id: req.params.id,
@@ -46,7 +46,23 @@ router.get("/:id", userValidator.checkParamId, async (req, res) => {
   }
 });
 
-router.patch("/:id", uploadImg, userValidator.checkParamId, async (req, res) => {
+router.put("/:id", async (req, res) => {
+  try {
+    let { success, message, data } = await UserService.update(
+      req.params.id,
+      req.body
+    );
+    if (success) {
+      return res.status(200).json({ success, message, data });
+    } else {
+      return res.status(400).json({ success, message, data });
+    }
+  } catch (error) {
+    res.status(400).json({ message: error });
+  }
+});
+
+router.patch("/:id", uploadImg, async (req, res) => {
   let payload = JSON.parse(JSON.stringify(req.body));
   if (req.file) {
     payload = { ...payload, userImg: req.file.path };
@@ -67,7 +83,7 @@ router.patch("/:id", uploadImg, userValidator.checkParamId, async (req, res) => 
   }
 });
 
-router.delete("/:id", userValidator.checkParamId, async (req, res) => {
+router.delete("/:id", async (req, res) => {
   try {
     let { success, message, data } = await UserService.softDelete(
       req.params.id

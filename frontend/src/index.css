@@ -1,0 +1,14 @@
+body {
+    margin: 10px;
+}
+
+.sub-header {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+.sub-header > p { 
+    font-size: 22px;
+    font-weight: 700;
+}

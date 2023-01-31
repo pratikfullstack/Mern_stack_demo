@@ -13,14 +13,11 @@ exports.create = async (file, user) => {
         data: null,
       };
     }
-    const salt = await bcrypt.genSalt(10);
-    const encryptedPassword = await bcrypt.hash(String(user.password), salt);
 
     const info = new User({
       firstName: user.firstName,
       lastName: user.lastName,
       email: user.email,
-      password: encryptedPassword,
       phoneNumber: user.phoneNumber,
       userImg: file.path,
     });

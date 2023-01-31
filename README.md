@@ -8,4 +8,5 @@ Here there are 2 folders Frontend(reactjs), Backend(nodejs).
 Frontend running on localhost: Port
 Backend running on localhost:8080 Port
 
-
+# Note
+For Delete i implemented soft delete there is one field "isActive" if it is TRUE then it is available if it is FALSE then it is soft delete.
