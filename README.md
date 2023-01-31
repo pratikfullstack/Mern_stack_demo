@@ -5,7 +5,7 @@ Here there are 2 folders Frontend(reactjs), Backend(nodejs).
 
 2. First Start backend project using "npm start" Once backend start after that start frontend project using "npm start".
 
-Frontend running on localhost: Port
+Frontend running on localhost:3000 Port
 Backend running on localhost:8080 Port
 
 # Note
